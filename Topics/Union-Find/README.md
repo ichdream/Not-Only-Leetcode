@@ -326,3 +326,50 @@ merge过程需要先调用find找到根节点，树的高度降低，find搜索�
 
 ### 进阶-路径压缩
 
+如何让路径更短呢？围绕这个问题，我们进行继续探索🤔
+
+在`find`方法中，我们需要while循环♻️来找到根节点，那么在查找的过程中能否把中间节点保存起来，在找到根节点后，将这些中间节点的父节点都指向根节点。
+
+但是，这个方法也有弊端。为什么？🤔，因为`find`操作非常频繁，会频繁造成生成中间节点数组，相应的分配销毁时间上升🔝。
+
+如何改进呢？🤔->
+
+<font color="yellow">**将节点的父节点指向该节点的爷爷节点，即跳过一个节点。**</font>这种方法很巧妙，结果会使得整颗树🌲更加扁平化了。
+
+思考：🤔为什么只跳过一个节点？可不可以跳过两个节点？
+
+```cpp
+int find(int p) {
+  while(p != id[p]) {
+    id[p] = id[id[p]];
+    p = id[p];
+  }
+  return p;
+}
+```
+
+
+
+
+
+### 总结
+
+---
+
+
+
+以上介绍的几种算法时间复杂度比较如下表⬇️：按照层层递进的关系
+
+|Algorithm|Constructor| Merge | Find|
+|:---:|:----:|:----:|:---:|
+|**Quick-Find**|N|N|1|
+|**Quick-Union**|N|Tree height|Tree height|
+|**Weighted Quick-Union**|N|lgN|lgN|
+|**Weighted Quick-Union With Compression**|N|very near to 1(amortized)|Very near to 1(amortized)|
+
+
+
+**注意**⚠️：
+
+如果不仅需要检测两个节点是否连通，还需要得到连通时具体的路径，那么这时就需要用到回溯算法：DFS，BFS了，这又是下一个专题🧱。
+
