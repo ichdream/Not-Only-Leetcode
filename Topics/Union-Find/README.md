@@ -373,3 +373,15 @@ int find(int p) {
 
 如果不仅需要检测两个节点是否连通，还需要得到连通时具体的路径，那么这时就需要用到回溯算法：DFS，BFS了，这又是下一个专题🧱。
 
+
+
+---
+
+### 参考文献
+
+本文主要参考了文献1，2，使用了1中大量的素材，不过将java代码改为C++实现。
+
+1 [并查集算法介绍](https://destiny1020.blog.csdn.net/article/details/7655764?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&dist_request_id=1330144.35168.16182255772598661&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control)
+
+2 [并查集应用举例-基础篇](https://blog.csdn.net/dm_vincent/article/details/7769159)
+
