@@ -16,7 +16,7 @@ int main()
     sort_helper::generate_array(arr1, n, 0, n);
     sort_helper::testsort<int>("mergesort", arr1, merge_sort<int>);
     sort_helper::generate_array(arr1, n, 0, n);
-    sort_helper::testsort<int>("quicksort", arr1, quicksort<int>);
+    sort_helper::testsort<int>("quicksort", arr1, quicksort1<int>);
     sort_helper::generate_array(arr1, n, 0, n);
     sort_helper::testsort<int>("quicksort2", arr1, quicksort2<int>);
     sort_helper::generate_array(arr1, n, 0, n);
@@ -30,7 +30,7 @@ int main()
     sort_helper::generate_nearly_sorted_array(arr1, n, 10);
     sort_helper::testsort<int>("mergesort", arr1, merge_sort<int>);
     sort_helper::generate_nearly_sorted_array(arr1, n, 10);
-    sort_helper::testsort<int>("quicksort", arr1, quicksort<int>);
+    sort_helper::testsort<int>("quicksort", arr1, quicksort1<int>);
     sort_helper::generate_nearly_sorted_array(arr1, n, 10);
     sort_helper::testsort<int>("quicksort2", arr1, quicksort2<int>);
     sort_helper::generate_nearly_sorted_array(arr1, n, 10);
@@ -43,7 +43,7 @@ int main()
     sort_helper::generate_array(arr1, n, 0, 10);
     sort_helper::testsort<int>("mergesort", arr1, merge_sort<int>);
     sort_helper::generate_array(arr1, n, 0, 10);
-    sort_helper::testsort<int>("quicksort", arr1, quicksort<int>);
+    sort_helper::testsort<int>("quicksort", arr1, quicksort1<int>);
     sort_helper::generate_array(arr1, n, 0, 10);
     sort_helper::testsort<int>("quicksort2", arr1, quicksort2<int>);
     sort_helper::generate_array(arr1, n, 0, 10);

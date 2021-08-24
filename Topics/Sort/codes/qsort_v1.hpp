@@ -36,7 +36,7 @@ void _quicksort(vector<T>& A, int l, int r)
 }
 
 template <typename T>
-void quicksort(vector<T>& A)
+void quicksort1(vector<T>& A)
 {
     srand(time(nullptr));
     _quicksort(A, 0, A.size());
