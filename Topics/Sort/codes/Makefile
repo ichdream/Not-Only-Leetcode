@@ -32,17 +32,21 @@ ifndef LINT_LANG
 	LINT_LANG = "all"
 endif
 
-.PHONY: clean all
+.PHONY: clean all build
 
-sortMain: sortMain.cpp
+build/sortMain: sortMain.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CFLAGS) $< -o $@
 
 
-all: clean 
+all: clean test
 
+.PHONY:test
+test:
+	./build/sortMain
 
 clean:
-	$(RM) -rf sortMain
+	$(RM) -rf sortMain qsort
+	$(RM) -rf build
 
 	
