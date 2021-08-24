@@ -1,3 +1,10 @@
+#ifndef _QSORT_V1_HPP                                                                        
+#define _QSORT_V1_HPP
+
+/**
+* @param:
+* @rerturn: note we return the index of the pivot, not the value ifself
+*/
 template <typename T>
 int partition(vector<T>& A, int l, int r)
 {
@@ -14,6 +21,9 @@ int partition(vector<T>& A, int l, int r)
     return i;
 }
 
+/**
+* recursively divide the vector into two parts
+*/
 template <typename T>
 void _quicksort(vector<T>& A, int l, int r)
 {
@@ -31,3 +41,5 @@ void quicksort(vector<T>& A)
     srand(time(nullptr));
     _quicksort(A, 0, A.size());
 }
+
+#endif

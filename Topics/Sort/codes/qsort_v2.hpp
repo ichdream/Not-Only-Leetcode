@@ -1,3 +1,6 @@
+#ifndef _QSORT_V2_HPP
+#define _QSORT_V2_HPP
+
 template <typename T>
 int partiton2(vector<T>& A, int l, int r)
 {
@@ -30,3 +33,5 @@ void quicksort2(vector<T>& A)
 {
     _quicksort2(A, 0, A.size()-1);
 }
+
+#endif

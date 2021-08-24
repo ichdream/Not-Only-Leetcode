@@ -1,3 +1,6 @@
+#ifndef _QSORT_V3_HPP
+#define _QSORT_V3_HPP
+
 template <typename T>
 void _quicksort3(vector<T>& A, int l, int r)
 {
@@ -33,3 +36,5 @@ void quicksort3(vector<T>& A)
     srand(time(nullptr));
     _quicksort3(A, 0, A.size()-1);
 }
+
+#endif
