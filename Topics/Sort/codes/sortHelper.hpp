@@ -1,3 +1,6 @@
+#ifndef _SROT_HELPER_H
+#define _SROT_HELPER_H
+
 #include <iostream>
 #include <vector>
 #include <functional>
@@ -50,7 +53,7 @@ namespace sort_helper {
     template <typename T>
     bool is_sorted(vector<T>& A)
     {
-        for (int i = 0; i < A.size()-1; ++i) {
+        for (size_t i = 0; i < A.size()-1; ++i) {
             if (A[i] > A[i+1])
                 return false;
         }
@@ -73,3 +76,5 @@ namespace sort_helper {
              << "s" << endl;
     }
 }
+
+#endif
