@@ -76,6 +76,18 @@ sort其实是最外一层wrapper，里面调用的是__sort函数，我们再看
 __sort函数也是一层wrapper，内部先后顺序调用了__introsort_loop和__final_insertion_sort这两个函数。
 
 __introsort_loop
+我们看代码整体流转，它并不是一个单一的算法，而是一个混合式的算法。
+在不同的场景和情形下执行不同的算法。
+- __partial_sort
+这个其实是堆排序的算法。它的执行条件是__depth_limit递减为0。堆排序的好处是在最坏的情况下它的时间复杂度依然可以是O(NlogN);然而快速排序在近乎有序的情况下，时间复杂度会恶化到$O(N^2)$。
+所以，这个__depth_limit参数是提前计算好的，防止__introsort_loop递归深度过深，性能恶化。当检测到这个条件满足时，剩下未排序的子序列就采用堆排序。
+- __introsort_loop
+还有一个需要注意的点是，这个__introsort_loop快速排序框架的写法和我们平常见到的不一样，内部在通过pivot将序列一分为二后，只对右边的子序列进行递归调用，左边的👈子序列没有看到同样的操作。
+
+  <font color="red">**为什么要这样设计？**</font>
+  1)其实，左边也同样得到了排序，只不过它是通过```last = cut```在下一轮while循环中进行操作的。
+  2)减少函数调用的次数。原来每一轮while循环里面有2个子函数调用，现在减少为一个，函数调用次数降低了一半。在数据量比较大的情况下，能够非常客观地提升排序性能，加快排序速度。 
+
 ```cpp
   /// This is a helper function for the sort routine.
   template<typename _RandomAccessIterator, typename _Size, typename _Compare>
@@ -101,6 +113,8 @@ __introsort_loop
 ```
 __introsort_loop内部其实又调用了__partial_sort
 我们再看其内部的两个helper function
+- __unguarded_partition_pivot快速排序的核心功能，从序列中选择pivot，它的做法是三中值法
+- __partial_sort 就是堆排序了
 ```cpp
   /// This is a helper function...
   template<typename _RandomAccessIterator, typename _Compare>
