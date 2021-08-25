@@ -2,6 +2,7 @@
 # set compiler defaults for OSX versus *nix
 # left people override either
 OS := $(shell uname)
+TEST_COVER := 1
 ifeq ($(OS), Darwin)
 ifndef CC
 export CC = $(if $(shell which clang), clang, gcc )
@@ -40,7 +41,7 @@ build/sortMain: sortMain.cpp
 	$(CXX) $(CFLAGS) $< -o $@
 
 
-.PHONY: clean all test build
+.PHONY: clean all test build valgrind
 
 
 build: build/sortMain
@@ -48,9 +49,13 @@ build: build/sortMain
 test:
 	./build/sortMain
 
+valgrind:
+	clear
+	valgrind --track-origins=yes --tool=memcheck --leak-check=full -s --show-reachable=yes ./build/sortMain
+
 clean:
 	@echo "clean..."
-	$(RM) -rf sortMain qsort
+	$(RM) -rf sortMain qsort *.gcda *.gcno *.log
 	$(RM) -rf build
 
 	
