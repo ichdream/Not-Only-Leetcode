@@ -8,7 +8,7 @@
 template <typename T>
 int partition(vector<T>& A, int l, int r)
 {
-    std::swap(A[r], A[rand() % (r-l+1) + l]);  // 基准点随机
+    std::swap(A[r], A[rand() % (r-l+1)+l]);  // 基准点随机
     T pivot = A[r];
     int i = l;
     for (int j = l; j < r; ++j)
@@ -39,7 +39,7 @@ template <typename T>
 void quicksort1(vector<T>& A)
 {
     srand(time(nullptr));
-    _quicksort(A, 0, A.size());
+    _quicksort(A, 0, A.size()-1);
 }
 
 #endif
